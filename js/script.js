@@ -105,7 +105,34 @@ const loadPetsByCategory = async (categoryName) => {
   const url = `https://openapi.programming-hero.com/api/peddy/category/${categoryName}`;
   const res = await fetch(url);
   const data = await res.json();
-  displayPets(data.data); // API returns data.data here
+  const pets = data.data // API returns data.data here
+
+    const container = document.getElementById("pets-container");
+  container.innerHTML = "";
+
+  if (!pets || pets.length === 0) {
+    // Show empty category message
+    container.innerHTML = `
+      <div style="
+      grid-column: 1 / -1;
+        text-align: center;
+        padding: 60px 20px;
+        width: 100%;
+      ">
+        <div style="font-size: 50px; margin-bottom: 10px;">🔍</div>
+        <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
+          No Pets Found
+        </h2>
+        <p style="font-size: 16px; color: #555;">
+          The "${categoryName}" category is currently empty. Please try another category!
+        </p>
+      </div>
+    `;
+    return;
+  }
+
+  // If pets exist, display them
+  displayPets(pets);
 };
 
 // Load All Pets Initially
