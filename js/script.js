@@ -154,14 +154,14 @@ const displayPets = (pets) => {
     card.classList.add("pet-card");
 
     card.innerHTML = `
-      <img src="${pet.image}" alt="${pet.pet_name}">
+      <img  src="${pet.image}" alt="${pet.pet_name}">
       <h3 class="pet-title">${pet.pet_name}</h3>
 
       <div class="pet-info">
-        <p>Breed: ${pet.breed || "Not Available"}</p>
-        <p>Birth: ${pet.date_of_birth || "Unknown"}</p>
-        <p>Gender: ${pet.gender || "Unknown"}</p>
-        <p>Price: ${pet.price ? pet.price + " ৳" : "Not Provided"}</p>
+        <p><i class="fa-solid fa-diamond"></i> ${pet.breed || "Not Available"}</p>
+        <p><i class="fa-regular fa-calendar"></i> ${pet.date_of_birth || "Unknown"}</p>
+        <p><i class="fa-solid fa-venus-mars"></i> ${pet.gender || "Unknown"}</p>
+        <p>৳ ${pet.price ? pet.price + " ৳" : "Not Provided"}</p>
       </div>
 
       <div class="pet-buttons flex items-center justify-between mt-3">
@@ -184,10 +184,10 @@ const openModal = (pet) => {
   modalBody.innerHTML = `
     <img src="${pet.image}" alt="${pet.pet_name}" style="width:100%; border-radius:8px; margin-bottom:12px;">
     <h2 style="margin-bottom:10px;">${pet.pet_name}</h2>
-    <p><strong>Breed:</strong> ${pet.breed || "Not Available"}</p>
-    <p><strong>Birth:</strong> ${pet.date_of_birth || "Unknown"}</p>
-    <p><strong>Gender:</strong> ${pet.gender || "Unknown"}</p>
-    <p><strong>Price:</strong> ${pet.price ? pet.price + " ৳" : "Not Provided"}</p>
+    <p><strong></strong><i class="fa-solid fa-diamond"></i>  ${pet.breed || "Not Available"}</p>
+    <p><strong></strong><i class="fa-regular fa-calendar"></i>  ${pet.date_of_birth || "Unknown"}</p>
+    <p><strong></strong><i class="fa-solid fa-venus-mars"></i> ${pet.gender || "Unknown"}</p>
+    <p><strong>৳ </strong> ${pet.price ? pet.price + " ৳" : "Not Provided"}</p>
     <p style="margin-top:10px;"><strong>Description:</strong> ${pet.pet_details || "No description available."}</p>
   `;
 
