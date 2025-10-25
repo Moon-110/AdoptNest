@@ -164,16 +164,45 @@ const displayPets = (pets) => {
         <p>Price: ${pet.price ? pet.price + " ৳" : "Not Provided"}</p>
       </div>
 
-      <div class="pet-buttons">
-        <button class="pet-btn like-btn">❤</button>
-        <button class="pet-btn adopt-btn">Adopt</button>
-        <button class="pet-btn details-btn">Details</button>
+      <div class="pet-buttons flex items-center justify-between mt-3">
+        <button class="pet-btn like-btn text-[#0E7A81] border p-2 rounded-md"><i class="fa-regular fa-thumbs-up"></i></button>
+        <button class="pet-btn adopt-btn text-[#0E7A81] border p-2 rounded-md">Adopt</button>
+        <button class="pet-btn details-btn text-[#0E7A81] border p-2 rounded-md">Details</button>
       </div>
     `;
+
+    card.addEventListener("click", () => openModal(pet));
 
     container.appendChild(card);
   });
 };
+
+const openModal = (pet) => {
+  const modal = document.getElementById("modal");
+  const modalBody = document.getElementById("modal-body");
+
+  modalBody.innerHTML = `
+    <img src="${pet.image}" alt="${pet.pet_name}" style="width:100%; border-radius:8px; margin-bottom:12px;">
+    <h2 style="margin-bottom:10px;">${pet.pet_name}</h2>
+    <p><strong>Breed:</strong> ${pet.breed || "Not Available"}</p>
+    <p><strong>Birth:</strong> ${pet.date_of_birth || "Unknown"}</p>
+    <p><strong>Gender:</strong> ${pet.gender || "Unknown"}</p>
+    <p><strong>Price:</strong> ${pet.price ? pet.price + " ৳" : "Not Provided"}</p>
+    <p style="margin-top:10px;"><strong>Description:</strong> ${pet.pet_details || "No description available."}</p>
+  `;
+
+  modal.style.display = "flex";
+};
+document.getElementById("modal-close").addEventListener("click", () => {
+  document.getElementById("modal").style.display = "none";
+});
+
+
+
+
+
+
+
 
 loadCategories();
 loadPets();
