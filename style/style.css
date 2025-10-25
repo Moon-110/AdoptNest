@@ -1,0 +1,15 @@
+/* #category-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 8px 14px;
+  border: none;
+  background-color: #ff914d;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+} */
